@@ -1,0 +1,19 @@
+[Unit]
+Description=TTC cloud-log poller (CloudTrail, GCP Audit Logs, Postgres trap)
+After=network-online.target docker.service
+Wants=network-online.target
+
+[Service]
+User=ubuntu
+WorkingDirectory=/opt/ttc/app
+EnvironmentFile=/etc/ttc/collector.env
+EnvironmentFile=/etc/ttc/cloud/aws-reader.env
+Environment=TTC_CLOUD_DIR=/etc/ttc/cloud
+Environment=TTC_PG_LOG_DIR=/var/lib/ttc/pglog
+Environment=TTC_POLL_RAW_LOG=/opt/ttc/app/data/raw-cloud-events.jsonl
+ExecStart=/opt/ttc/venv/bin/python -m collector.pollers
+Restart=always
+RestartSec=15
+
+[Install]
+WantedBy=multi-user.target

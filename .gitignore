@@ -1,0 +1,43 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Data: only the synthetic sample is tracked. Real campaign data (ttc.db, raw-*.jsonl,
+# snapshots, manifests) contains decoy credentials / campaign internals - never commit it.
+data/*
+!data/sample/
+data/sample/*.db
+*.db
+*.sqlite
+*.sqlite3
+*.jsonl
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+oci-ids.env
+webhook.env
+pastebin.env
+reader.env
+users.csv
+creds.csv
+keys.csv
+
+# Generated output
+figures/out/
+stand/capture/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*~

@@ -1,0 +1,15 @@
+[Unit]
+Description=TTC honeytoken webhook collector
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=ubuntu
+WorkingDirectory=/opt/ttc/app
+EnvironmentFile=/etc/ttc/collector.env
+ExecStart=/opt/ttc/venv/bin/python -m uvicorn collector.main:build_app --factory --host 127.0.0.1 --port 8000 --proxy-headers
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

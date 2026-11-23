@@ -1,0 +1,2 @@
+# Ці файли виконуються на Linux-VM: CRLF після checkout на Windows зламав би bash/systemd
+* text eol=lf
